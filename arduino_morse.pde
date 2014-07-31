@@ -57,7 +57,7 @@ void mouseReleased() {
 
 void mousePressed() {
   if (released > 60 && released < 170) {
-    morse += ' ';
+    morse += " ";
     String mletter = morse.substring(index, morse.length() - 1);
     int j = 0;
     for (int i = 0; i < 37; i++) {
