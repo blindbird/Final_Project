@@ -49,15 +49,15 @@ void draw() {
 }
 
 void mouseReleased() {
-  if (pressed <= 20) morse += '.';
-  if (pressed > 20) morse += '-';
+  if (pressed <= 20) morse += ".";
+  if (pressed > 20) morse += "-";
   println(morse);
   pressed = 0;
 }
 
 void mousePressed() {
   if (released > 60 && released < 170) {
-    morse += ' ';
+    morse += " ";
     String mletter = morse.substring(index, morse.length() - 1);
     int j = 0;
     for (int i = 0; i < 37; i++) {
@@ -69,8 +69,8 @@ void mousePressed() {
     index = morse.length() - 1;
   }
   if (released > 170) {
-    morse += '|';
-    translated += ' ';
+    morse += "|";
+    translated += " ";
   }
   released = 0;
 }
