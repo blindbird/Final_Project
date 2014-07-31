@@ -1,8 +1,9 @@
-const int button1Pin = 2;  // pushbutton 1 pin
-const int button2Pin = 3;  // pushbutton 2 pin
-const int button3Pin = 4;  // pushbutton 3 pin
-const int button4Pin = 5;  // pushbutton 4 pin
-const int ledPin =  13;    // LED pin
+const int button1Pin = 2;      // pushbutton 1 pin
+const int button2Pin = 3;      // pushbutton 2 pin
+const int button3Pin = 4;      // pushbutton 3 pin
+const int button4Pin = 5;      // pushbutton 4 pin
+const int ledPinNoise =  13;   // LED pin for dots and dashes
+const int ledPinSpace = 12;    //LED pin for space
 
 String morse = "";         // message
 int counter = 0;           // beats
@@ -15,12 +16,14 @@ void setup()
   pinMode(button1Pin, INPUT);
   pinMode(button2Pin, INPUT);
   pinMode(button3Pin, INPUT);
-  pinMode(button4Pin, INPUT);
+  pinMode(button4Pin, INPUT);              
+  
   
   // Set up the LED pin to be an output:
-  pinMode(ledPin, OUTPUT);
+  pinMode(ledPinNoise, OUTPUT);
+  pinMode(ledPinSpace, OUTPUT);
   // Set up the buzzer to be an output:
-  pinMode(buzzerPin, OUTPUT);  
+  pinMode(buzzerPin, OUTPUT);
 }
 
 
@@ -37,9 +40,9 @@ void loop()
      // Function for button 1:
      if (button1State == LOW && (button2State == HIGH && button3State == HIGH)) {
        tone(buzzerPin, 262, 500);
-       digitalWrite(ledPin, HIGH);
+       digitalWrite(ledPinNoise, HIGH);
        delay(500);
-       digitalWrite(ledPin, LOW);
+       digitalWrite(ledPinNoise, LOW);
        morse += '0';
        counter++;
      }
@@ -48,9 +51,9 @@ void loop()
      // Function for button 2:
      if (button2State == LOW && (button1State == HIGH && button3State == HIGH)) {
        tone(buzzerPin, 262, 1500);
-       digitalWrite(ledPin, HIGH);
+       digitalWrite(ledPinNoise, HIGH);
        delay(1500);
-       digitalWrite(ledPin, LOW);
+       digitalWrite(ledPinNoise, LOW);
        morse += '1';
        counter++;
      }
@@ -58,9 +61,9 @@ void loop()
      
      // Function for button 3:
      if (button3State == LOW  && (button1State == HIGH && button2State == HIGH)) {
-       digitalWrite(ledPin, HIGH);
+       digitalWrite(ledPinSpace, HIGH);
        delay(500);
-       digitalWrite(ledPin, LOW);
+       digitalWrite(ledPinSpace, LOW);
        morse += 's';
        counter++;
      }
@@ -72,22 +75,22 @@ void loop()
          
          if (morse.charAt(i) == '0') {
            tone(buzzerPin, 262, 500);
-           digitalWrite(ledPin, HIGH);
+           digitalWrite(ledPinNoise, HIGH);
            delay(500);
-           digitalWrite(ledPin, LOW);
+           digitalWrite(ledPinNoise, LOW);
          }
          
          if (morse.charAt(i) == '1') {
            tone(buzzerPin, 262, 1500);
-           digitalWrite(ledPin, HIGH);
+           digitalWrite(ledPinNoise, HIGH);
            delay(1500);
-           digitalWrite(ledPin, LOW);           
+           digitalWrite(ledPinNoise, LOW);           
          }
          
          if (morse.charAt(i) == 's') {
-           digitalWrite(ledPin, HIGH);
+           digitalWrite(ledPinSpace, HIGH);
            delay(500);
-           digitalWrite(ledPin, LOW);
+           digitalWrite(ledPinSpace, LOW);
          }
          
          delay(500);
