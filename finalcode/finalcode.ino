@@ -36,9 +36,9 @@ void loop()
        
      // Function for button 1:
      if (button1State == LOW && (button2State == HIGH && button3State == HIGH)) {
-       tone(buzzerPin, 262, 1000);
+       tone(buzzerPin, 262, 500);
        digitalWrite(ledPin, HIGH);
-       delay(1000);
+       delay(500);
        digitalWrite(ledPin, LOW);
        morse += '0';
        counter++;
@@ -47,9 +47,9 @@ void loop()
     
      // Function for button 2:
      if (button2State == LOW && (button1State == HIGH && button3State == HIGH)) {
-       tone(buzzerPin, 262, 3000);
+       tone(buzzerPin, 262, 1500);
        digitalWrite(ledPin, HIGH);
-       delay(3000);
+       delay(1500);
        digitalWrite(ledPin, LOW);
        morse += '1';
        counter++;
@@ -59,7 +59,7 @@ void loop()
      // Function for button 3:
      if (button3State == LOW  && (button1State == HIGH && button2State == HIGH)) {
        digitalWrite(ledPin, HIGH);
-       delay(1000);
+       delay(500);
        digitalWrite(ledPin, LOW);
        morse += 's';
        counter++;
@@ -71,24 +71,26 @@ void loop()
         for (int i = 0; i < counter; i++) {
          
          if (morse.charAt(i) == '0') {
-           tone(buzzerPin, 262, 1000);
+           tone(buzzerPin, 262, 500);
            digitalWrite(ledPin, HIGH);
-           delay(1000);
+           delay(500);
            digitalWrite(ledPin, LOW);
          }
          
          if (morse.charAt(i) == '1') {
-           tone(buzzerPin, 262, 3000);
+           tone(buzzerPin, 262, 1500);
            digitalWrite(ledPin, HIGH);
-           delay(3000);
+           delay(1500);
            digitalWrite(ledPin, LOW);           
          }
          
          if (morse.charAt(i) == 's') {
-           delay(1000);
+           digitalWrite(ledPin, HIGH);
+           delay(500);
+           digitalWrite(ledPin, LOW);
          }
          
-         delay(1000);
+         delay(500);
 
        }
      }
