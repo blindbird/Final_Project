@@ -49,8 +49,8 @@ void draw() {
 }
 
 void mouseReleased() {
-  if (pressed <= 20) morse += '.';
-  if (pressed > 20) morse += '-';
+  if (pressed <= 20) morse += ".";
+  if (pressed > 20) morse += "-";
   println(morse);
   pressed = 0;
 }
@@ -69,8 +69,8 @@ void mousePressed() {
     index = morse.length() - 1;
   }
   if (released > 170) {
-    morse += '|';
-    translated += ' ';
+    morse += "|";
+    translated += " ";
   }
   released = 0;
 }
