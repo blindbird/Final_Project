@@ -1,5 +1,6 @@
+
 PImage img;
-int pressed, released;
+int pressed;
 String morse, translated;
 char[] alpha = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
             'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
@@ -45,18 +46,17 @@ void draw() {
     pressed++;
   }
   
-  released++;
 }
 
 void mouseReleased() {
   if (pressed <= 20) morse += ".";
   if (pressed > 20) morse += "-";
-  println(morse);
   pressed = 0;
 }
 
-void mousePressed() {
-  if (released > 60 && released < 170) {
+void keyPressed() {
+  if (key == 'r') morse = "";
+  if (key == ' ') {
     morse += " ";
     String mletter = morse.substring(index, morse.length() - 1);
     int j = 0;
@@ -68,15 +68,10 @@ void mousePressed() {
     
     index = morse.length() - 1;
   }
-  if (released > 170) {
-    morse += "|";
-    translated += " ";
+  if (key == ',') {
+    
   }
-  released = 0;
-}
-
-void keyPressed() {
-  if (key == ' ') morse = "";
+  
 }
 
 
