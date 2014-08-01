@@ -16,9 +16,9 @@ int index;
 boolean show;
 
 void setup() {
-  size(1144, 500);
+  size(700, 500);
   img = loadImage("aluminum-foil.jpg");
-  chart = loadImage("chart.png");
+  //chart = loadImage("chart.png");
   pressed = 0;
   morse = "";
   translated = "";
@@ -29,30 +29,30 @@ void setup() {
 void draw() {
   stroke(0);
   fill(255);
-  ellipse(524, 120, 50, 50);
+  ellipse(80, 120, 50, 50);
   
-  image(img, 444, 200, 270, 200);
-  image(chart, 0, 0);
+  image(img, 0, 200, 270, 200);
+ // image(chart, 0, 0);
   
-  line(443, 0, 443, 700);
-  line(744, 0, 744, 700);
+ // line(443, 0, 443, 700);
+  line(300, 0, 300, 700);
   
   noStroke();
   fill(0);
-  rect(745, 0, 400, 500);
+  rect(301, 0, 400, 500);
   
   stroke(255);
   fill(255);
   textSize(26);
-  text(morse, 750, 50);
-  text(translated, 750, 450);
+  text(morse, 306, 50);
+  text(translated, 306, 450);
   fill(0);
-  if (show) text("click", 500, 300);
+  if (show) text("click", 56, 300);
   
-  if (mousePressed == true && mouseX >= 444 && mouseX <= 714 && mouseY >= 200 && mouseY <= 400) {
+  if (mousePressed == true && mouseX >= 0 && mouseX <= 270 && mouseY >= 200 && mouseY <= 400) {
     stroke(0);
     fill(255, 0, 0);
-    ellipse(524, 120, 50, 50);
+    ellipse(80, 120, 50, 50);
     pressed++;
     show = false;
   }
@@ -60,7 +60,7 @@ void draw() {
 }
 
 void mouseReleased() {
-  if (pressed <= 20) morse += ".";
+  if (pressed <= 20 && pressed != 0) morse += ".";
   if (pressed > 20) morse += "-";
   pressed = 0;
 }
